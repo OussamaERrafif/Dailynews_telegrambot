@@ -112,6 +112,7 @@ def help_message(message):
 /start - Start receiving news updates
 /help - Show this help message
 /stop - Stop receiving news updates
+/status - Check bot status and subscription info
 
 **How it works:**
 Once you start the bot, you'll receive news articles every 5 minutes automatically.
@@ -144,6 +145,33 @@ def stop_message(message):
             bot.send_message(message.chat.id, "You are not currently subscribed. Send /start to begin receiving updates.")
         except Exception as e:
             logger.error(f"Error sending stop message: {e}")
+
+
+@bot.message_handler(commands=['status'])
+def status_message(message):
+    """
+    Handle the 'status' command to show bot status.
+
+    Args:
+        message (telegram.Message): The message object representing the user's message.
+
+    Returns:
+        None
+    """
+    try:
+        status_text = f"""
+**Bot Status** 📊
+
+**Articles loaded:** {len(articles)}
+**Current article:** {current_article_index + 1} of {len(articles) if articles else 0}
+**Update interval:** {NEWS_UPDATE_INTERVAL} minutes
+**Subscribed:** {'Yes' if user_chat_id == message.chat.id else 'No'}
+
+Send /start to subscribe to updates.
+        """
+        bot.send_message(message.chat.id, status_text, parse_mode="Markdown")
+    except Exception as e:
+        logger.error(f"Error sending status message: {e}")
 
 
 def send_next_article():
