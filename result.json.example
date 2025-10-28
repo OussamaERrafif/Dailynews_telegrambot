@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "title": "Example News Article 1",
+      "description": "This is a sample description for the first news article. It provides a brief overview of the content.",
+      "author": "John Doe",
+      "url": "https://example.com/article1",
+      "urlToImage": "https://via.placeholder.com/800x600.png?text=News+Image+1"
+    },
+    {
+      "title": "Example News Article 2",
+      "description": "This is a sample description for the second news article. It covers different topics.",
+      "author": "Jane Smith",
+      "url": "https://example.com/article2",
+      "urlToImage": "https://via.placeholder.com/800x600.png?text=News+Image+2"
+    },
+    {
+      "title": "Example News Article 3",
+      "description": "This is a sample description for the third news article. More interesting content here.",
+      "author": "Bob Johnson",
+      "url": "https://example.com/article3",
+      "urlToImage": "https://via.placeholder.com/800x600.png?text=News+Image+3"
+    }
+  ]
+}
