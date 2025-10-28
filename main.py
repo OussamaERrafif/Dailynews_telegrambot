@@ -159,15 +159,16 @@ def status_message(message):
         None
     """
     try:
-        current_pos = current_article_index if articles else 0
         total_articles = len(articles)
+        # Display 1-based index for users (next article to be sent)
+        current_pos = (current_article_index + 1) if articles and current_article_index < total_articles else 0
         is_subscribed = user_chat_id == message.chat.id if user_chat_id else False
         
         status_text = f"""
 **Bot Status** 📊
 
 **Articles loaded:** {total_articles}
-**Current article:** {current_pos} of {total_articles}
+**Next article:** {current_pos} of {total_articles}
 **Update interval:** {NEWS_UPDATE_INTERVAL} minutes
 **Subscribed:** {'Yes ✅' if is_subscribed else 'No ❌'}
 
